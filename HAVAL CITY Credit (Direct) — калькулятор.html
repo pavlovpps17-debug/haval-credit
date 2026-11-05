@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HAVAL CITY Credit (Direct) — калькулятор</title>
+<style>
+:root{--bg:#f4f5f7;--cd:#fff;--tx:#1a1d23;--mu:#6b7280;--ac:#c8102e;--bd:#e0e3e8;--ok:#0a7d3b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161a;--cd:#1d2026;--tx:#eceef2;--mu:#9aa1ad;--ac:#ff5a6e;--bd:#2c3038;--ok:#4cd68a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14161a;--cd:#1d2026;--tx:#eceef2;--mu:#9aa1ad;--ac:#ff5a6e;--bd:#2c3038;--ok:#4cd68a;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+.w{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:4px 0 2px}.s{color:var(--mu);font-size:13px;margin-bottom:14px}
+.f{background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:flex;flex-direction:column;font-size:12px;color:var(--mu);gap:4px;min-width:0}
+input,select{font:inherit;font-size:16px;padding:9px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);width:100%;box-sizing:border-box;-webkit-appearance:none;appearance:none}
+.full{grid-column:1/-1}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--tx) 50%),linear-gradient(135deg,var(--tx) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:34px}
+.mdl{color:var(--tx);font-size:13px;font-weight:700}.mdl select{border:3px solid var(--ac);font-weight:700;padding:11px 44px 11px 10px;background-image:linear-gradient(45deg,transparent 50%,var(--ac) 50%),linear-gradient(135deg,var(--ac) 50%,transparent 50%);background-position:calc(100% - 26px) 55%,calc(100% - 17px) 55%;background-size:9px 9px,9px 9px}
+.i{margin:12px 2px;font-size:13px;color:var(--mu)}
+.c{background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.c.top{border:2px solid var(--ac)}
+.h{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.m{color:var(--mu);font-size:12px}
+.tag{background:var(--ac);color:#fff;font-size:11px;padding:2px 8px;border-radius:99px;margin-left:auto}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.g small{display:block;color:var(--mu);font-size:11px}
+.g strong{font-size:16px}
+.hint{margin-top:8px;font-size:12px;color:var(--ok)}
+.n{font-size:12px;color:var(--mu);margin-top:16px}
+.chk{flex-direction:row;align-items:center;gap:8px}.chk input{width:auto}
+button{font:inherit;cursor:pointer}
+.b{margin-top:10px;width:100%;padding:10px;border:1px solid var(--ac);background:none;color:var(--ac);border-radius:8px;font-weight:600}
+.b2{padding:9px 12px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:8px}
+#ov{display:none;position:fixed;inset:0;z-index:20;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch;padding:calc(12px + env(safe-area-inset-top,0px)) 12px calc(20px + env(safe-area-inset-bottom,0px))}
+.tool{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;max-width:760px;margin-left:auto;margin-right:auto}
+.doc{max-width:760px;margin:0 auto;background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:16px}
+.doc h2{margin:0 0 2px;font-size:19px}.doc h3{margin:18px 0 8px;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+td,th{padding:6px 8px;border-bottom:1px solid var(--bd);text-align:right}
+th{color:var(--mu);font-weight:600;font-size:12px}
+.p td:first-child{text-align:left;color:var(--mu)}.p td:last-child{font-weight:600}
+.sc{overflow-x:auto}.sc td:first-child,.sc th:first-child{text-align:center}
+.tot td{font-weight:700;border-top:2px solid var(--tx)}
+@media print{.w,.tool{display:none!important}#ov{position:static;overflow:visible;padding:0}.doc{border:0}}
+</style></head><body>
+<div class="w">
+<h1>HAVAL CITY Credit (Direct)</h1>
+<div class="s">Ставки банков-партнёров · действуют 01.11.2026 – 30.11.2026</div>
+<div class="f">
+<label class="full mdl">Модель<select id="model"><option value="0">JOLION</option><option value="1">M6</option><option value="2">F7 II</option><option value="3">F7x II</option><option value="4">DARGO</option></select></label>
+<label class="full">Стоимость автомобиля, ₽<input id="price" type="text" inputmode="numeric" autocomplete="off" value="3 000 000"></label>
+<label>Доп. оборудование<select id="et"><option value="credit">В кредит</option><option value="cash">За наличные</option></select></label>
+<label>Сумма доп. оборудования, ₽<input id="ea" type="text" inputmode="numeric" autocomplete="off" value="0"></label>
+<label class="full">Первоначальный взнос, ₽<input id="down" type="text" inputmode="numeric" autocomplete="off" value="600 000"></label>
+<label>Что задано<select id="mode"><option value="term">Срок</option><option value="pay">Желаемый платёж</option></select></label>
+<label id="lt">Срок, мес<select id="term"><option>12</option><option>24</option><option>36</option><option>48</option><option selected>60</option><option>72</option><option>84</option></select></label>
+<label id="lw" style="display:none">Платёж в месяц, ₽<input id="want" type="text" inputmode="numeric" autocomplete="off" value="50 000"></label>
+<label>КАСКО<select id="kt"><option value="cash">За наличные</option><option value="credit">В кредит</option></select></label>
+<label>Сумма КАСКО, ₽<input id="ka" type="text" inputmode="numeric" autocomplete="off" value="0"></label>
+<label>GAP<select id="gt"><option value="cash">За наличные</option><option value="credit">В кредит</option></select></label>
+<label>Сумма GAP, ₽<input id="ga" type="text" inputmode="numeric" autocomplete="off" value="0"></label>
+<label class="chk full"><input id="all" type="checkbox">Показать все продукты, а не лучший у каждого банка</label>
+</div>
+<div class="i" id="info"></div>
+<div id="out"></div>
+<div class="n">Все продукты доступны только при оформлении КАСКО HAVAL Insurance. Аннуитетный платёж, ставка в % годовых. КАСКО, GAP и доп. оборудование «в кредит» увеличивают сумму кредита, «за наличные» в график не входят. Ставка определяется по доле взноса от стоимости автомобиля без допов. Цена авто в ДКП не должна превышать МЦП более чем на 5%. Программа не сочетается с госсубсидированием автокредитов. «Займ» — продукты со специальными условиями займа (ставка 0%). Расчёт предварительный, окончательные условия уточняйте в банке.</div>
+</div>
+<div id="ov"></div>
+<script>
+const T=[12,24,36,48,60,72,84],B=[70,60,50,40,30,20,10];
+const S1=[0,1,3,4],S2=[1,3],S3=[0,2,4],S4=[0,1,2,3,4];
+const K14='x,x,.01,.01,.01,.01,1.3|x,.01,.01,.01,2.8,4.8,5.7|x,.01,1.6,4.1,5.8,7.4,8.4|x,.01,3.9,6.1,7.5,8.9,9.7|.01,1.6,5.9,7.8,9.1,10.2,11|.01,3.8,7.6,9.3,10.4,11.3,11.8|.01,5.4,8.9,10.3,11.3,12.3,12.8';
+const R=[
+['1',S1,0,'.01,.01,2.4,6.6,8.3,9.7,10.6|.01,1.3,6.2,9.7,11,12,12.7|.01,5,9.8,11.6,12.7,13.5,14.1|.01,6.4,11.4,12.9,13.8,14.5,15|1,10.4,12.6,13.8,14.6,15.2,15.6|1.85,11.6,13.5,14.5,15.2,15.7,16.1|4.2,12.6,14.2,15.1,15.7,16.2,16.5'],
+['1.2',[3],0,'x,x,.01,1.7,4.3,5.2,6.5|x,.01,2.4,5,7,8.4,9.3|x,.5,5,7.5,9.2,10.3,11|x,3.2,7,9.2,10.6,11.6,12.1|.01,5,8.5,10.4,11.6,12.5,12.9|.01,6.5,9.6,11.3,12.4,13.1,13.5|.01,7.7,10.5,12,13,13.7,14.1'],
+['1.3',[1],0,'x,x,.01,.01,.01,2,2.5|x,.01,1.7,4.5,6.3,7.9,8.7|x,.01,4.3,7,8.2,9.8,10.4|x,2.1,6.3,8.7,9.6,11.1,11.5|.01,4.3,8.1,9.9,10.9,12,12.3|.01,5.7,9.1,10.8,11.9,12.6,12.9|.01,7.2,10.1,11.5,12.4,13.2,13.4'],
+['1.4',S3,0,K14],
+['2.1',S1,0,'.01,.01,1,4.6,5.1,5.5,6.3|.01,.5,4.5,8,9.5,10.5,11|.01,4.2,8.9,10.8,11.7,12.4,12.9|.01,6.5,11.2,12.6,13.4,13.9,14.4|2.2,11,12.7,13.8,14.5,15,15.2|4.8,12.7,14,14.8,15.3,15.5,16|5.5,13.8,15,15.8,16.3,16.7,17'],
+['2.2',S1,0,'5.01,5.01,6,9.6,10.1,10.5,11.3|5.01,5.5,9.5,13,14.5,15.5,16|5.01,9.2,13.9,15.8,16.7,17.4,17.9|5.01,11.5,16.2,17.6,18.4,18.9,19.4|7.2,16,17.7,18.8,19.5,20,20.2|9.8,17.7,19,19.8,20.3,20.5,21|10.5,18.8,20,20.8,21.3,21.7,22'],
+['2.3',S2,0,'x,x,.01,.5,1.5,3,4|x,.01,1,4,5.1,6.5,7|x,1,4.7,6.4,7.9,8.8,9.6|x,3.6,6.6,8.9,10.1,11,11.6|.01,5.5,8.6,10.5,11.5,12.3,12.8|.5,7.6,10.3,11.5,12.9,13.5,14|2,9,11.4,12.5,13.5,14,14.5'],
+['2.4',S2,0,'x,x,5.01,5.5,6.5,8,9|x,5.01,6,9,10.1,11.5,12|x,6,9.7,11.4,12.9,13.8,14.6|x,8.6,11.6,13.9,15.1,16,16.6|5.01,10.5,13.6,15.5,16.5,17.3,17.8|5.5,12.6,15.3,16.5,17.9,18.5,19|7,14,16.4,17.5,18.5,19,19.5'],
+['2.5',S3,0,K14],
+['2.6',S3,0,'x,x,5.01,5.01,5.01,5.01,6.3|x,5.01,5.01,5.01,7.8,9.8,10.7|x,5.01,6.6,9.1,10.8,12.4,13.4|x,5.01,8.9,11.1,12.5,13.9,14.7|5.01,6.6,10.9,12.8,14.1,15.2,16|5.01,8.8,12.6,14.3,15.4,16.3,16.8|5.01,10.4,13.9,15.3,16.3,17.3,17.8'],
+['2.7',S4,1,'0,0|0|0|0'],
+['2.8',S2,1,'x,x,0|x,0'],
+['2.9',S3,1,'x,x,0,0|x,0,0,0|x,0|x,0'],
+['3.1',S1,0,'.01,.01,1,5.5,8,8.5,9.5|.01,.01,4.5,9.5,11,12,12|.01,3,9.5,11.5,12.5,13,13.5|.01,5.5,11.5,12.5,13.5,14,14.5|.01,10,12.5,13.5,14.5,15,15|1,11.5,13.5,14.5,15,15.5,15.5|3,12.5,14.5,15,15.5,16,16'],
+['3.2',S1,0,'2.51,2.51,3.5,8,10.5,11,12|2.51,2.51,7,12,13.5,14.5,14.5|2.51,5.5,12,14,15,15.5,16|2.51,8,14,15,16,16.5,17|2.51,12.5,15,16,17,17.5,17.5|3.5,14,16,17,17.5,18,18|5.5,15,17,17.5,18,18.5,18.5'],
+['3.3',S2,0,'x,x,.01,1.5,3.5,5.5,6|x,x,1.5,4.5,7,9,9.5|x,.01,4.5,7.5,9.5,10.5,11|x,2,7,9.5,10.5,11.5,12.5|x,4.5,8.5,10,11.5,12.5,13|.01,6,9.5,11,12.5,13,13.5|.01,7.5,10.5,12,13,13.5,14'],
+['3.4',S2,0,'x,x,2.51,4,6,8,8.5|x,x,4,7,9.5,11.5,12|x,2.51,7,10,12,13,13.5|x,4.5,9.5,12,13,14,15|x,7,11,12.5,14,15,15.5|2.51,8.5,12,13.5,15,15.5,16|2.51,10,13,14.5,15.5,16,16.5'],
+['3.5',S3,0,'x,x,.01,.01,.01,.01,1.3|x,x,.01,.01,2.8,4.8,5.7|x,.01,.01,4,5.8,7.4,8.4|x,.01,3,6,7.5,8.9,9.7|x,.01,5,7.8,9.1,10.2,11|.01,2,7,9,10.4,11.3,11.8|.01,4,8,10,11.3,12,12.5'],
+['3.6',S3,0,'x,x,2.51,2.51,2.51,4,4.5|x,x,2.51,3,5.5,7,8.5|x,2.51,2.51,6.5,8.5,10,11|x,2.51,5.5,8.5,10.5,11.5,12.5|x,2.51,7.5,10.5,12,13,13.5|2.51,4.5,9.5,11.5,13,14,14.5|2.51,6.5,10.5,12.5,14,14.5,15'],
+['4.1',S1,0,'.01,.01,.01,4.2,5.9,7.2,8.2|.01,.01,3.9,8.2,9.4,10.4,10.7|.01,1.5,8,9.8,10.5,11,11.6|.01,4,9.8,10.8,11.5,12.2,12.5|.01,8.5,11,12.1,12.7,12.9,13.2|.01,9.9,12,12.9,13.5,13.6,14|1.5,10,13,13.5,14,14.2,14.5'],
+['4.2',S2,0,'x,x,x,.01,.01,2,2.5|x,x,.01,2.9,4.1,5.4,5.5|x,.01,3,4.9,6.4,7.3,8.1|x,.01,5.1,7.4,8.6,9.5,10.1|x,2.7,7,8.5,10,10.8,11.2|x,4.3,8,9.5,10.9,11.5,11.7|.01,6,9,10.5,11.5,12,12.5'],
+['4.3',S3,0,'x,x,x,.01,.01,.01,.01|x,x,.01,.01,.01,2.7,4.1|x,.01,.01,2,4.2,5.6,6.9|x,.01,.01,4.2,6,6.9,8.2|x,.01,2.5,6,7.6,8.7,9.5|x,.01,4.9,7.5,8.9,9.8,10.3|.01,1.3,6.4,8.8,9.8,10.5,11.2'],
+['5.1',S1,0,'.01,.01,.9,4.8,6.5,7.8,8.8|.01,.01,5.7,8.8,10,11,11.3|.01,4.7,10,11.3,12,12.5,13.1|.01,6.7,11.3,12.3,13,13.7,14|3.3,10.8,12.9,13.6,14.2,14.4,14.7|5.3,12.3,13.8,14.4,15,15.1,15.5|7.2,13.7,14.8,15.3,15.5,15.7,16'],
+['5.2',S2,0,'x,x,.01,.01,3.3,4.1,4.8|x,x,2.7,4.8,6.9,8,8.4|x,1.4,5.7,7.7,8.9,10.2,10.7|x,4,7.7,9.2,10.3,11.5,12|.01,6.1,9.3,10.6,11.6,12.6,12.7|1.8,7.8,10.6,11.8,12.6,13,13.2|3.8,9.1,11.5,12.5,13.3,13.9,14.1'],
+['5.3',S3,0,'x,x,.01,.01,.01,.01,1.3|x,x,.01,.01,2.8,4.8,5.7|x,.01,1.6,4.1,5.8,7.4,8.4|x,.01,3.9,6.1,7.5,8.9,9.7|.01,1.6,5.9,7.8,9.1,10.2,11|.01,3.8,7.6,9.3,10.4,11.3,11.8|.01,5.4,8.9,10.3,11.3,12.3,12.8']
+].map(([id,s,loan,d])=>({id:id==='1'?'1.1':id,bank:'Банк-Партнер-'+id[0],s,loan,d:d.split('|').map(r=>{const a=r.split(',').map(x=>x==='x'?null:parseFloat(x));while(a.length<7)a.push(null);return a})}));
+const $=i=>document.getElementById(i),f=n=>Math.round(n).toLocaleString('ru-RU'),f2=n=>n.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2}),fr=r=>String(r).replace('.',','),num=i=>parseInt(String($(i).value).replace(/\D/g,''),10)||0;
+const pmt=(S,r,n)=>{const q=r/1200;return q?S*q/(1-Math.pow(1+q,-n)):S/n};
+const rate=(p,bi,ti)=>{const r=p.d[bi];return r&&r[ti]!=null?r[ti]:null};
+function msg(t){$('out').innerHTML='<div class="c">'+t+'</div>'}
+function sched(S,r,n){const q=r/1200,pay=Math.round(pmt(S,r,n)*100)/100;let b=S,rows=[],ti=0,tp=0;
+ for(let i=1;i<=n;i++){const it=Math.round(b*q*100)/100;let pr=pay-it,py=pay;if(i===n){pr=b;py=b+it}b=Math.round((b-pr)*100)/100;rows.push([i,py,pr,it,b]);ti+=it;tp+=py}
+ return{rows,ti,tp,pay}}
+let cur=[],cx={},shareTxt='';
+function run(){try{
+ const m=$('mode').value;$('lt').style.display=m==='term'?'':'none';$('lw').style.display=m==='pay'?'':'none';
+ const price=num('price'),down=num('down'),mi=+$('model').value,term=+$('term').value,want=num('want'),ka=num('ka'),ga=num('ga'),ea=num('ea'),kc=$('kt').value==='credit',gc=$('gt').value==='credit',ec=$('et').value==='credit';
+ $('info').textContent='';cur=[];
+ if(!(price>0))return msg('Введите стоимость автомобиля.');
+ if(down>=price)return msg('Первоначальный взнос должен быть меньше стоимости автомобиля.');
+ if(m==='pay'&&!want)return msg('Введите желаемый платёж.');
+ const pct=down/price*100,bi=B.findIndex(b=>pct>=b);
+ if(bi<0)return msg('Взнос '+pct.toFixed(1).replace('.',',')+'% — меньше 10%. Программа таких условий не предусматривает.');
+ const loan=price-down+(kc?ka:0)+(gc?ga:0)+(ec?ea:0),cash=(kc?0:ka)+(gc?0:ga)+(ec?0:ea);
+ $('info').textContent='Сумма кредита: '+f(loan)+' ₽ · взнос '+pct.toFixed(1).replace('.',',')+'%'+(cash?' · наличными отдельно: '+f(cash)+' ₽':'')+(ea?' · авто + допы: '+f(price+ea)+' ₽':'')+(ea>500000?' · допы больше 500 000 ₽, уточните у банка':'');
+ cx={price,down,pct,loan,ka,ga,ea,kc,gc,ec,model:$('model').options[$('model').selectedIndex].text};
+ let rows=[];
+ R.forEach(p=>{if(!p.s.includes(mi))return;let best=null;
+  T.forEach((t,ti)=>{if(m==='term'&&t!==term)return;const r=rate(p,bi,ti);if(r==null)return;
+   const pay=pmt(loan,r,t);if(m==='pay'&&pay>want)return;
+   const o={p,t,ti,r,pay,over:pay*t-loan};
+   if(m==='term')rows.push(o);else if(!best||o.over<best.over)best=o});
+  if(best)rows.push(best)});
+ rows.sort((a,b)=>a.over-b.over||a.pay-b.pay);
+ if(!rows.length)return msg(m==='term'?'На выбранный срок и размер взноса подходящих условий нет. Попробуйте другой срок или увеличьте взнос.':'Платёж '+f(want)+' ₽ не достигается ни в одном продукте. Увеличьте взнос или платёж.');
+ if($('all').checked)cur=rows.slice(0,60);else{const seen={};cur=rows.filter(o=>seen[o.p.bank]?0:(seen[o.p.bank]=1))}
+ $('out').innerHTML=cur.map((o,i)=>{
+  let h='';
+  if(bi>0){const nb=bi-1,nr=rate(o.p,nb,o.ti),need=Math.ceil(price*B[nb]/100)-down;
+   if(nr!=null&&need>0&&need<loan){const np=pmt(loan-need,nr,o.t);h='<div class="hint">+'+f(need)+' ₽ к взносу → ставка '+fr(nr)+'%, платёж '+f(np)+' ₽, переплата '+f(np*o.t-(loan-need))+' ₽</div>'}
+   const sh=Math.ceil((price-down*100/B[nb])/1000)*1000;
+   if(nr!=null&&sh>0&&ea+sh<=500000){const l2=loan-(ec?0:sh),p2=pmt(l2,nr,o.t);h+='<div class="hint">Или переложить '+f(sh)+' ₽ в допы (допы всего '+f(ea+sh)+' ₽) → цена авто '+f(price-sh)+' ₽, ставка '+fr(nr)+'%, платёж '+f(p2)+' ₽, переплата '+f(p2*o.t-l2)+' ₽</div>'}}
+  return '<div class="c'+(i?'':' top')+'"><div class="h"><b>'+o.p.bank+'</b><span class="m">Продукт '+o.p.id+(o.p.loan?' · займ':'')+'</span>'+(i?'':'<span class="tag">самый выгодный</span>')+'</div><div class="g"><div><small>Платёж в месяц</small><strong>'+f(o.pay)+' ₽</strong></div><div><small>Ставка · срок</small><strong>'+fr(o.r)+'% · '+o.t+' мес</strong></div><div><small>Переплата</small><strong>'+f(o.over)+' ₽</strong></div><div><small>Выплат по кредиту</small><strong>'+f(o.pay*o.t)+' ₽</strong></div></div>'+h+'<button class="b" onclick="show('+i+')">График платежей</button></div>'}).join('');
+}catch(e){msg('Ошибка расчёта: '+e.message)}}
+function show(i){
+ const o=cur[i],c=cx,s=sched(c.loan,o.r,o.t),d=new Date().toLocaleDateString('ru-RU');
+ const pl=(a,cr)=>a?f(a)+' ₽ — '+(cr?'включено в кредит':'наличными, вне кредита'):'—';
+ const P=[['Автомобиль','HAVAL '+c.model],['Стоимость автомобиля',f(c.price)+' ₽'],['Дополнительное оборудование',pl(c.ea,c.ec)],['Первоначальный взнос',f(c.down)+' ₽ ('+c.pct.toFixed(1).replace('.',',')+'%)'],['КАСКО',pl(c.ka,c.kc)],['GAP',pl(c.ga,c.gc)],['Сумма кредита',f(c.loan)+' ₽'],['Банк',o.p.bank],['Ставка',fr(o.r)+'% годовых'],['Срок',o.t+' мес'],['Ежемесячный платёж',f2(s.pay)+' ₽'],['Переплата по кредиту',f2(s.ti)+' ₽'],['Всего выплат по кредиту',f2(s.tp)+' ₽']];
+ shareTxt='Расчёт автокредита, '+d+'\n'+P.map(x=>x[0]+': '+x[1]).join('\n')+'\n\nГрафик платежей:\n'+s.rows.map(r=>r[0]+'. '+f2(r[1])+' ₽ (остаток '+f2(r[4])+' ₽)').join('\n');
+ $('ov').innerHTML='<div class="tool"><button class="b2" onclick="hide()">← Назад</button><button class="b2" onclick="window.print()">Печать / PDF</button><button class="b2" onclick="share()">Поделиться</button></div><div class="doc"><h2>Расчёт автокредита</h2><div class="m">'+d+' · HAVAL CITY Credit (Direct)</div><h3>Условия</h3><table class="p">'+P.map(x=>'<tr><td>'+x[0]+'</td><td>'+x[1]+'</td></tr>').join('')+'</table><h3>График платежей</h3><div class="sc"><table><tr><th>№</th><th>Платёж, ₽</th><th>Основной долг, ₽</th><th>Проценты, ₽</th><th>Остаток, ₽</th></tr>'+s.rows.map(r=>'<tr><td>'+r[0]+'</td><td>'+f2(r[1])+'</td><td>'+f2(r[2])+'</td><td>'+f2(r[3])+'</td><td>'+f2(r[4])+'</td></tr>').join('')+'<tr class="tot"><td>Итого</td><td>'+f2(s.tp)+'</td><td>'+f2(c.loan)+'</td><td>'+f2(s.ti)+'</td><td></td></tr></table></div><p class="n">Расчёт предварительный и не является офертой. Окончательные условия определяет банк. Ставки по программе HAVAL CITY Credit (Direct) действуют с 01.11.2026 по 30.11.2026.</p></div>';
+ $('ov').style.display='block';$('ov').scrollTop=0;document.body.style.overflow='hidden'}
+function hide(){$('ov').style.display='none';document.body.style.overflow=''}
+function share(){try{if(navigator.share)navigator.share({title:'Расчёт автокредита',text:shareTxt}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(shareTxt).then(()=>alert('Расчёт скопирован'))}catch(e){alert('Не удалось поделиться. Сделайте скриншот.')}}
+const sp=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+['price','down','want','ka','ga','ea'].forEach(i=>{const el=$(i);
+ el.addEventListener('input',()=>{const v=el.value,d=v.slice(0,el.selectionStart).replace(/\D/g,'').length,t=sp(v.replace(/\D/g,'').replace(/^0+(?=\d)/,''));el.value=t;let c=0,p=0;if(d>0){for(;p<t.length&&c<d;p++){if(t[p]!==' ')c++}}try{el.setSelectionRange(p,p)}catch(e){}});
+ el.addEventListener('focus',()=>{if(el.value==='0')el.value=''});
+ el.addEventListener('blur',()=>{const n=num(i);el.value=n?sp(n):(i==='ka'||i==='ga'||i==='ea'?'0':'')})});
+['price','down','model','mode','term','want','ka','kt','ga','gt','ea','et','all'].forEach(i=>{$(i).addEventListener('input',run);$(i).addEventListener('change',run)});
+run();
+</script></body></html>
