@@ -26,7 +26,7 @@ select{background-image:linear-gradient(45deg,transparent 50%,var(--tx) 50%),lin
 .g strong{font-size:16px}
 .hint{margin-top:8px;font-size:12px;color:var(--ok)}
 .n{font-size:12px;color:var(--mu);margin-top:16px}
-.chk{flex-direction:row;align-items:center;gap:8px}.chk input{width:auto}
+.chk{flex-direction:row;align-items:center;gap:10px;color:var(--tx);font-size:14px;cursor:pointer}.chk input{-webkit-appearance:checkbox;appearance:auto;width:24px;height:24px;margin:0;padding:0;flex:none;accent-color:var(--ac)}
 button{font:inherit;cursor:pointer}
 .b{margin-top:10px;width:100%;padding:10px;border:1px solid var(--ac);background:none;color:var(--ac);border-radius:8px;font-weight:600}
 .b2{padding:9px 12px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:8px}
@@ -127,13 +127,23 @@ function run(){try{
  if(!rows.length)return msg(m==='term'?'На выбранный срок и размер взноса подходящих условий нет. Попробуйте другой срок или увеличьте взнос.':'Платёж '+f(want)+' ₽ не достигается ни в одном продукте. Увеличьте взнос или платёж.');
  if($('all').checked)cur=rows.slice(0,60);else{const seen={};cur=rows.filter(o=>seen[o.p.bank]?0:(seen[o.p.bank]=1))}
  $('out').innerHTML=cur.map((o,i)=>{
-  let h='';
-  if(bi>0){const nb=bi-1,nr=rate(o.p,nb,o.ti),need=Math.ceil(price*B[nb]/100)-down;
-   if(nr!=null&&need>0&&need<loan){const np=pmt(loan-need,nr,o.t);h='<div class="hint">+'+f(need)+' ₽ к взносу → ставка '+fr(nr)+'%, платёж '+f(np)+' ₽, переплата '+f(np*o.t-(loan-need))+' ₽</div>'}
-   const sh=Math.ceil((price-down*100/B[nb])/1000)*1000;
-   if(nr!=null&&sh>0&&ea+sh<=500000){const l2=loan-(ec?0:sh),p2=pmt(l2,nr,o.t);h+='<div class="hint">Или переложить '+f(sh)+' ₽ в допы (допы всего '+f(ea+sh)+' ₽) → цена авто '+f(price-sh)+' ₽, ставка '+fr(nr)+'%, платёж '+f(p2)+' ₽, переплата '+f(p2*o.t-l2)+' ₽</div>'}}
+  let h=hints(o,bi);
   return '<div class="c'+(i?'':' top')+'"><div class="h"><b>'+o.p.bank+'</b><span class="m">Продукт '+o.p.id+(o.p.loan?' · займ':'')+'</span>'+(i?'':'<span class="tag">самый выгодный</span>')+'</div><div class="g"><div><small>Платёж в месяц</small><strong>'+f(o.pay)+' ₽</strong></div><div><small>Ставка · срок</small><strong>'+fr(o.r)+'% · '+o.t+' мес</strong></div><div><small>Переплата</small><strong>'+f(o.over)+' ₽</strong></div><div><small>Выплат по кредиту</small><strong>'+f(o.pay*o.t)+' ₽</strong></div></div>'+h+'<button class="b" onclick="show('+i+')">График платежей</button></div>'}).join('');
 }catch(e){msg('Ошибка расчёта: '+e.message)}}
+function hints(o,bi){const c=cx,CAP=400000;if(bi<1)return '';
+ const ev=(L,r)=>{const p=pmt(L,r,o.t);return '→ ставка '+fr(r)+'%, платёж '+f(p)+' ₽, переплата '+f(p*o.t-L)+' ₽'};
+ let n0=-1;for(let nb=bi-1;nb>=0;nb--){if(rate(o.p,nb,o.ti)!=null){n0=nb;break}}
+ if(n0<0)return '';
+ let h='',r0=rate(o.p,n0,o.ti),need=Math.ceil(c.price*B[n0]/100)-c.down;
+ if(need>0&&need<c.loan)h+='<div class="hint">+'+f(need)+' ₽ к взносу '+ev(c.loan-need,r0)+'</div>';
+ let fnd=0;
+ for(let nb=n0;nb>=0&&!fnd;nb--){const r=rate(o.p,nb,o.ti);if(r==null)continue;
+  const sh=Math.ceil((c.price-c.down*100/B[nb])/1000)*1000;
+  if(sh>0&&c.ea+sh<=CAP){fnd=nb===n0?2:1;h+='<div class="hint">Или переложить '+f(sh)+' ₽ в допы, цена авто '+f(c.price-sh)+' ₽ '+ev(c.loan-(c.ec?0:sh),r)+'</div>'}}
+ if(fnd!==2){const sm=Math.floor((CAP-c.ea)/1000)*1000;
+  if(sm>0){const ex=Math.ceil((c.price-sm)*B[n0]/100)-c.down,L=c.loan-(c.ec?0:sm)-ex;
+   if(ex>0&&L>0&&c.price-sm>c.down)h+='<div class="hint">Или переложить '+f(sm)+' ₽ в допы и добавить '+f(ex)+' ₽ к взносу, цена авто '+f(c.price-sm)+' ₽ '+ev(L,r0)+'</div>'}}
+ return h}
 function show(i){
  const o=cur[i],c=cx,s=sched(c.loan,o.r,o.t),d=new Date().toLocaleDateString('ru-RU');
  const pl=(a,cr)=>a?f(a)+' ₽ — '+(cr?'включено в кредит':'наличными, вне кредита'):'—';
@@ -149,5 +159,9 @@ const sp=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
  el.addEventListener('focus',()=>{if(el.value==='0')el.value=''});
  el.addEventListener('blur',()=>{const n=num(i);el.value=n?sp(n):(i==='ka'||i==='ga'||i==='ea'?'0':'')})});
 ['price','down','model','mode','term','want','ka','kt','ga','gt','ea','et','all'].forEach(i=>{$(i).addEventListener('input',run);$(i).addEventListener('change',run)});
+const IDS=['model','price','down','mode','term','want','kt','ka','gt','ga','et','ea'],KEY='haval_calc_v1';
+function save(){try{const o={all:$('all').checked};IDS.forEach(i=>o[i]=$(i).value);localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}
+try{const o=JSON.parse(localStorage.getItem(KEY)||'null');if(o){IDS.forEach(i=>{if(o[i]!=null){$(i).value=o[i];if($(i).tagName==='SELECT'&&$(i).selectedIndex<0)$(i).selectedIndex=0}});$('all').checked=!!o.all}}catch(e){}
+document.querySelectorAll('input,select').forEach(e=>{e.addEventListener('input',save);e.addEventListener('change',save)});
 run();
 </script></body></html>
